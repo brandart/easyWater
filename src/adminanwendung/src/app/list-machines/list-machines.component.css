@@ -1,0 +1,14 @@
+mat-table {
+    width: 100%;
+}
+
+mat-cell {
+    text-align: center;
+}
+
+mat-header-cell {
+    padding: 15px;    
+    text-align: left;
+    font-size: 13pt;
+    color: black;
+}

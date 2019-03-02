@@ -1,0 +1,71 @@
+<!--
+<button mat-raised-button (click)="setDisplayForm()">
+Hinzufügen
+</button>-->
+
+<button *ngIf='displayForm' mat-raised-button (click)="closeDisplayForm()">Abbrechen</button>
+<br>
+
+<div *ngIf="displayForm" class="inputDiv">
+    <mat-form-field>
+        <input matInput type="number" placeholder="Seriennummer" [(ngModel)]="this.workerId" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Username" [(ngModel)]="this.workerUsername">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Vorname" [(ngModel)]="this.workerFirstname">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Nachname" [(ngModel)]="this.workerLastname">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Passwort" [(ngModel)]="this.workerPassword">
+    </mat-form-field>
+    <br>
+    <mat-checkbox class="example-margin" [(ngModel)]="isAdmin">Admin</mat-checkbox>
+    <br>
+    <br>
+    <button mat-raised-button color="primary" (click)="addWorker()" [disabled]="!this.workerId || !this.workerUsername || !this.workerFirstname || !this.workerLastname || !this.workerPassword">
+    Mitarbeiter speichern</button>
+</div>
+
+<mat-table [dataSource]="this.dataSource">
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{element.worker_id}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="username">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element"> {{element.lastname}} {{element.firstname}}  </mat-cell>
+    </ng-container>
+
+    <!--
+    <ng-container matColumnDef="action">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Aktion </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="changeWorker(element._id)">
+                Bearbeiten
+            </button>
+            <button mat-raised-button (click)="deleteWorker(element._id, element._rev)">
+                Löschen
+            </button>
+        </mat-cell>
+    </ng-container>
+
+-->
+    <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

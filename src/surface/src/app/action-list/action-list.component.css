@@ -1,0 +1,9 @@
+.mat-table {
+    width: 100%;
+}
+
+.inputDiv {
+    width: 50%;
+    float: left;
+    margin: 20px
+}

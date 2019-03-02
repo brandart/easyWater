@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="background-logo">
+        <div class="center">
+            <mat-card style="width: 30%; margin-top: 25vh">
+                <p style="margin-top: 50px; font-size: 50px" class="center">Login</p>
+                <form>
+                    <div style="margin-top: 35px;" class="center">
+                        <mat-form-field style="width:60%">
+                            <input matInput placeholder="Nutzername" [(ngModel)]="username" name="username" type="text" required>
+                        </mat-form-field>
+                    </div>
+                    <div style="margin-top: 5px;" class="center">
+                        <mat-form-field style="width:60%">
+                            <input matInput placeholder="Passwort" [(ngModel)]="password" name="password" type="text" type="password" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="center">
+                        <button mat-stroked-button color="primary" (click)="loginListener()" style="width: 80%; margin-top: 10px; margin-bottom: 50px">Login</button>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</body>
+
+</html>

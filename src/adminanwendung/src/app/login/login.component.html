@@ -1,0 +1,20 @@
+<div style="text-align: center">
+    <img src="assets/img/Logo_transparent.png" style="width:300px;height:120px">
+    <blockquote class="text-center">Bitte
+        <b>loggen</b> Sie sich ein!</blockquote>
+</div>
+
+<div style="text-align: center" *ngIf="this.passwordWrong">
+    <blockquote style="color: red">Falsches Passwort oder Username eingegeben!</blockquote>
+</div>
+
+<div style="text-align: center">
+    <input mat-input type="username" placeholder="Username" [(ngModel)]="typedInUsername">
+</div>
+<div style="text-align: center">
+    <input mat-input type="password" placeholder="Passwort" [(ngModel)]="typedInPassword">
+</div>
+
+<div style="text-align: center">
+    <button mat-raised-button (click)='login()'>Login</button>
+</div>

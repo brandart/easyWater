@@ -1,0 +1,53 @@
+.img {
+    width: 30%;
+    align-self: left;
+}
+
+.signatureImg {
+    width: 200px;
+    height: 75px;
+}
+
+.signature-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.header {
+    font-size: 30px;
+}
+
+.signature {
+    border: 0;
+}
+
+.radio {
+    width: 20px;
+    height: 20px;
+}
+
+.wrapper {
+    position: relative;
+    height: 200px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid black;
+}
+
+.signature-pad {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 200px;
+}
+
+::ng-deep .mat-checkbox-background :checked {
+    background-color: blue;
+}
+
+#ruler {
+    visibility: hidden;
+    white-space: nowrap;
+}

@@ -1,0 +1,84 @@
+<div class="inputDiv">
+  <mat-form-field>
+    <mat-select placeholder="Type" (selectionChange)="this.actionType = $event.value" [(ngModel)]="this.actionType" required>
+      <mat-option id="optionService" value="Wartung">
+        Wartung
+      </mat-option>
+      <mat-option id="optionInstallation" value="Installation">
+        Installation
+      </mat-option>
+      <mat-option id="optionReplace" value="Tausch">
+        Tausch
+      </mat-option>
+      <mat-option id="optionRepair" value="Reparatur">
+        Reparatur
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Mitarbeiter" [(ngModel)]="this.actionWorkerId" required>
+      <mat-option *ngFor="let worker of this.workers" [value]="worker._id">
+        {{worker.lastname}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <div *ngIf="editActionBool === false">
+    <mat-form-field>
+      <input type="text" placeholder="Kunde" [(ngModel)]="selectedCustomer" matInput id="matInput0" [formControl]="myControl" [matAutocomplete]="auto" required>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.cZusatz == "" ? option.cFirma : option.cFirma + " - " + option.cZusatz}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="selectedCustomer.kKunde === undefined" (click)="listCustomer()"><mat-icon>add</mat-icon></button>
+    <br>
+    <!--
+  <label *ngIf="selectedCustomer !== undefined">Kunde: {{selectedCustomer.cFirma}}</label>
+  <mat-form-field>
+    <mat-select placeholder="Kunde" (selectionChange)="this.fillMachineSelectionWithMachinesOfCustomer($event.value)"
+      [(ngModel)]="this.actionCustomerId" required>
+    <mat-select placeholder="Kunde" [(ngModel)]="this.actionCustomerId" required>
+      <mat-option *ngFor="let customer of customers" [value]="customer.kKunde">
+        {{customer.cFirma}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+-->
+<!--
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="Maschine" [(ngModel)]="this.actionMachineId" required>
+        <mat-option *ngFor="let machine of machines" [value]="machine._id">
+          {{machine.serialnumber}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+  -->
+
+  <mat-form-field>
+    <input type="text" placeholder="Maschine" [(ngModel)]="selectedMachine" matInput id="matInput1" [formControl]="myControl2" [matAutocomplete]="auto2" required>
+    <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn2">
+      <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option" (click)="machineSelectionChanged(option)">
+        {{option.serialnumber}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  </div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Datum" [formControl]="this.actionDate" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+</div>
+
+<div style="clear: both; margin-left: 20px; margin-top: 20px">
+  <button *ngIf="editActionBool === false" mat-raised-button color="primary" (click)="save();" [disabled]="this.selectedMachine.serialnumber == undefined || this.actionDate == undefined || this.actionType == undefined
+  || this.actionWorkerId == undefined || this.actionCustomerId == undefined">Speichern</button>
+  <button *ngIf="editActionBool" mat-raised-button color="primary" (click)="save();">Ändern</button>
+  <br>
+</div>

@@ -1,0 +1,43 @@
+<div >
+  <button mat-raised-button (click)="setDisplayForm()">
+    Hinzufügen
+  </button>
+  <button *ngIf='displayForm' mat-raised-button (click)="closeDisplayForm()">Abbrechen</button>
+  <br>
+  <br>
+
+  <div class="inputDiv" *ngIf="displayForm">
+    <!--
+    <mat-form-field>
+      <input matInput type="number" placeholder="Nummer" [(ngModel)]="this.num" required>
+    </mat-form-field>
+  -->
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="this.description">
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary" (click)="addMachineType()" [disabled]="!this.description">
+      Speichern</button>
+    <br>
+  </div>
+
+  <mat-table [dataSource]="this.dataSource">
+
+    <!--
+    <ng-container matColumnDef="id">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.machine_id}} </mat-cell>
+    </ng-container>
+
+  -->
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Beschreibung </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+    <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

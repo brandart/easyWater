@@ -1,0 +1,329 @@
+<div class="jumbotron container-fluid">
+    <div style="overflow:hidden">
+        <div>
+            <img class="img" id="water" src="./assets/img/energyWaterPicture.png" alt="" align="left" />
+        </div>
+        <div>
+            <img style="width: 35%;" id="logo" src="./assets/img/energyWaterLogo.png" align="right" />
+        </div>
+    </div>
+    <div align="right">
+        <p class="header">
+            Wasser / Frucht / Kaffee &#9899; Automaten Sturmberger
+        </p>
+    </div>
+</div>
+
+<span id="ruler"></span>
+
+
+
+<div class="container-fluid" align="right">
+    <p>
+        4341 Arbing / Technologiestraße 3
+        <br> T. +43(0)664 221 81 08
+        <br> F. +43(0) 7238 29105
+        <br> M. office@energywater.at
+    </p>
+</div>
+<div id="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm col">
+                <strong style="font-size:40px;">Service-Bericht</strong>
+            </div>
+            <div class="col-sm col">
+                <strong style="font-size:40px; float:right; color:rgb(133, 133, 133)">www.energywater.at</strong>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid ">
+        <p style="font-size: 30px"> {{actionData.action_type}} </p>
+    </div>
+
+    <table class="table table-bordered col-sm">
+        <tr>
+            <div class="row container-fluid">
+                <div align:center class="col" style="width:50%">
+                    {{actionDataText[0]}}
+                    <br>
+                    <textarea class="form-control input-lg" rows="3" cols="90" type="text" id="auftrag-nr" [(ngModel)]="actionData.actionNumber"></textarea>
+                    <div class="invalid-tooltip">
+                        Geben Sie die Auftragsnummer ein.
+                    </div>
+                </div>
+                <div align:center class="col" style="width:50%">
+                    {{actionDataText[1]}}
+                    <br>
+                    <textarea class="form-control input-lg" rows="3" cols="90" type="text" id="kunde">{{actionData.customer}}</textarea>
+                    <div class="invalid-tooltip">
+                        Geben Sie den Kunden ein.
+                    </div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <br>
+            <div class="row container-fluid">
+                <div align:center class="col" style="width:50%">
+                    {{actionDataText[2]}}
+                    <br>
+                    <input class="form-control input-lg" type="text" [(ngModel)]="actionData.customerNumber" value="{{actionData.customerNumber}}">
+                    <div class="invalid-tooltip">
+                        Geben Sie die Kundennummer ein.
+                    </div>
+                </div>
+                <div align:center class="col" style="width:50%">
+                    {{actionDataText[3]}}
+                    <br>
+                    <input class="form-control input-lg" type="text" [(ngModel)]="actionData.vehicle">
+                    <div class="invalid-tooltip">
+                        Geben Sie das Fahrzeug ein.
+                    </div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <br>
+            <div class="row container-fluid" style="border:red">
+                <div align:center class="col">
+                    {{actionDataText[4]}}
+                    <br>
+                    <textarea class="form-control input-lg" rows="1" cols="90" type="text" id="techniker" [(ngModel)]="actionData.technicianName"> {{actionData.technicianName}} </textarea>
+                    <div class="invalid-tooltip">
+                        Geben Sie den Namen des Technikers ein.
+                    </div>
+                </div>
+                <div align:center class="col row" style="width:50%">
+                    <div class="col">
+                        {{actionDataText[5]}}
+                        <br>
+                        <textarea class="form-control input-lg" rows="1" cols="90" type="text" id="straße" [(ngModel)]="actionData.street"> {{actionData.street}} </textarea>
+                        <div class="invalid-tooltip">
+                            Geben Sie die Straße ein.
+                        </div>
+                    </div>
+                    <div class="col">
+                        {{actionDataText[6]}}
+                        <br>
+                        <textarea class="form-control input-lg" rows="1" cols="90" type="text" id="ort" [(ngModel)]="actionData.city"> {{actionData.city}} </textarea>
+                        <div class="invalid-tooltip">
+                            Geben Sie die PLZ und den Ort ein.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <br>
+            <div class="row container-fluid">
+                <div align:center class="col">
+                    {{actionDataText[7]}}
+                    <br>
+                    <input class="form-control input-lg" type="time" [(ngModel)]="actionData.approach">
+                    <div class="invalid-tooltip">
+                        Geben Sie die Uhrzeit der Anfahrt ein.
+                    </div>
+                </div>
+                <div align:center class="col">
+                    {{actionDataText[8]}}
+                    <br>
+                    <input class="form-control input-lg" type="time" [(ngModel)]="actionData.departure">
+                    <div class="invalid-tooltip">
+                        Geben Sie die Uhrzeit der Abfahrt ein.
+                    </div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <br>
+            <div class="row container-fluid">
+                <div align:center class="col">
+                    {{actionDataText[9]}}
+                    <br>
+                    <textarea class="form-control input-lg" rows="1" cols="90" type="text" [(ngModel)]="actionData.partner"></textarea>
+                    <div class="invalid-tooltip">
+                        Geben Sie Ansprechpartner ein.
+                    </div>
+                </div>
+                <div align:center class="col">
+                    {{actionDataText[10]}}
+                    <br>
+                    <input class="form-control input-lg" type="time" [(ngModel)]="actionData.timeForWork">
+                    <div class="invalid-tooltip">
+                        Geben Sie die Arbeitszeit ein.
+                    </div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <br>
+            <div class="row container-fluid">
+                <div class="col">
+                    {{actionDataText[11]}}
+                    <br>
+                    <input class="form-control input-lg" rows="1" cols="90" type="number" [(ngModel)]="actionData.distance">
+                    <div class="invalid-tooltip">
+                        Geben Sie die gefahrenen Kilometer ein.
+                    </div>
+                </div>
+                <div class="col row">
+                    <div class="col">
+                        {{actionDataText[12]}}
+                        <br>
+                        <input class="form-control input-lg" rows="1" cols="90" type="text" value="{{actionData.telephone}}" [(ngModel)]="actionData.telephone">
+                        <div class="invalid-tooltip">
+                            Geben Sie die Telefonnummer ein.
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        {{actionDataText[13]}}
+                        <br>
+                        <input class="form-control input-lg" type="text" value="{{actionData.email}}" [(ngModel)]="actionData.email">
+                        <div class="invalid-tooltip invalid-feedback">
+                            Geben Sie die Email-Adresse des Kunden ein.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </tr>
+    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm col">
+                <td>
+                    <table id="tableGer" class="table table-bordered">
+                        <thead class="thead-light">
+                            <th colspan="2">
+                                Gerät/Serien-Nr., Standort oder Reparaturbericht
+                            </th>
+                        </thead>
+                        <tr *ngFor="let row of rowsGer">
+                            <td>
+                                Seriennummer:
+                                <textarea class="form-control input-lg" rows="1" cols="90" type="text" [(ngModel)]="row[0]"></textarea> Standort:
+                                <textarea class="form-control input-lg" rows="1" cols="90" type="text" [(ngModel)]="row[1]"></textarea> Reparaturbericht:
+                                <textarea class="form-control input-lg" rows="5" cols="90" type="text" [(ngModel)]="row[2]"></textarea>
+                            </td>
+                        </tr>
+                        <tr *ngIf="showButtons">
+                            <td colspan="2">
+                                <div class="row">
+                                    <button class="col btn btn-success" id="add" (click)="addRowGer()">+</button>
+                                    <button class="col btn btn-danger" id="del" (click)="deleteRowGer()">-</button>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                    <div class="col">
+                        <div>
+                            <p style="font-size:25px; display: inline">
+                                Nächste Wartung:
+                            </p>
+                            <mat-form-field *ngIf="showButtons">
+                                <input matInput [matDatepicker]="picker" [(ngModel)]="dateLater">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            <p style="font-size:25px; display: inline" *ngIf="!showButtons">
+                                {{dateLater | date:'dd.MM.yyyy'}}
+                            </p>
+                        </div>
+                    </div>
+                </td>
+            </div>
+            <div class="col-sm col col-md col-lg">
+                <td>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <th>
+                                Wartungsarbeiten
+                            </th>
+                            <th>
+                                Gerät/Serien-Nr.
+                            </th>
+                        </thead>
+                        <tr *ngFor="let type of differentWorkingTypes">
+                            <td>
+                                {{type[0]}}
+                            </td>
+                            <td>
+                                <mat-checkbox (change)="type[1] = !type[1]">Ok</mat-checkbox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{mark.name}}
+                            </td>
+                            <td>
+                                <mat-form-field>
+                                    <mat-select placeholder="Zustand" [(ngModel)]="mark.number">
+                                        <mat-option value="1">1</mat-option>
+                                        <mat-option value="2">2</mat-option>
+                                        <mat-option value="3">3</mat-option>
+                                        <mat-option value="4">4</mat-option>
+                                        <mat-option value="5">5</mat-option>
+                                        <mat-option value="6">6</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table id="tablemab" class="container-fluid table table-bordered">
+                        <thead class="thead-light">
+                            <th>
+                                Menge
+                            </th>
+                            <th>
+                                Artikel-Nr.
+                            </th>
+                            <th>
+                                Bezeichnung
+                            </th>
+                        </thead>
+                        <tr *ngFor="let row of rowsWart">
+                            <td>
+                                <input class="form-control input-lg" type="number" [(ngModel)]="row[0]" min="0">
+                            </td>
+                            <td>
+                                <input class="form-control input-lg" type="number" [(ngModel)]="row[1]">
+                            </td>
+                            <td>
+                                <input class="form-control input-lg" type="text" [(ngModel)]="row[2]">
+                            </td>
+                        </tr>
+                        <tr *ngIf="showButtons">
+                            <td colspan="3">
+                                <div class="row">
+                                    <button class="col btn btn-success" (click)="addRowWart()">+</button>
+                                    <button class="col btn btn-danger" (click)="deleteRowWart()">-</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row container-fluid" style="border-bottom: 1px solid #000;">
+    <div class="col">
+        <p style="font-size:40px" class="signature-bottom"> Datum: {{date | date:'dd.MM.yyyy'}} </p>
+    </div>
+
+    <div class="col">
+        <img class="signatureImg signature-bottom" id="signature" style="left:25%" src="./assets/img/signature.png" />
+    </div>
+
+    <signature-pad [options]="signaturePadOptions"></signature-pad>
+
+</div>
+<button class="button btn-lg btn-primary" (click)="save()" *ngIf="showButtons">Speichern</button>
+<button class="button btn-lg btn-primary" id="clear" style="float:right" (click)="clearSignature()" *ngIf="showButtons">Unterschrift löschen</button>

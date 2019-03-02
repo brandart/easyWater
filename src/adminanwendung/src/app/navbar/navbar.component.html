@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)" [disableClose]="true">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/actions" [ngClass]="{'highlight': this.toHighlight === 'Aktionen'}" (click)="this.toHighlight = 'Aktionen'">Aktionen</a>
+      <a mat-list-item routerLink="/workers" [ngClass]="{'highlight': this.toHighlight === 'Mitarbeiter'}" (click)="this.toHighlight = 'Mitarbeiter'">Mitarbeiter</a>
+      <a mat-list-item routerLink="/machines" [ngClass]="{'highlight': this.toHighlight === 'Maschinen'}" (click)="this.toHighlight = 'Maschinen'">Maschinen</a>
+      <a mat-list-item routerLink="/settings" [ngClass]="{'highlight': this.toHighlight === 'Einstellungen'}" (click)="this.toHighlight = 'Einstellungen'">Einstellungen</a>
+      <a mat-list-item (click)="this.loginComponent.logout()">Logout</a>
+    </mat-nav-list>
+    <p style="position: absolute; left: 0; padding-left: 10px; bottom: 0">V. {{version}}</p>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Administrations-Applikation</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

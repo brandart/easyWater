@@ -1,0 +1,9 @@
+.inputDiv{
+    width: 50%;
+    float: left;
+    margin: 20px
+}
+
+mat-form-field{
+    width: 100%
+}

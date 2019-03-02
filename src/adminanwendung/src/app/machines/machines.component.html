@@ -1,0 +1,12 @@
+<mat-tab-group (selectedTabChange)="tabClicked($event)" [selectedIndex]="this.selectedTabIndex">
+  <mat-tab label="Maschinen">
+    <app-list-machines></app-list-machines>
+  </mat-tab>
+
+  <mat-tab label="Maschine hinzufügen">
+    <app-add-machine (triggerAddMachine)="this.selectedTabIndex = $event"></app-add-machine>
+  </mat-tab>
+  <mat-tab label="Maschinen Typ hinzufügen">
+    <app-machine-type></app-machine-type>
+  </mat-tab>
+</mat-tab-group>

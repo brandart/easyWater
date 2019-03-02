@@ -1,0 +1,21 @@
+<mat-toolbar>Synchronisieren</mat-toolbar>
+<mat-tab-group>
+    <mat-tab label="Vom Server">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (mouseup)="pull()" color="primary">Synchronisieren</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Zum Server">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (mouseup)="push()" color="primary">Synchronisieren</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>

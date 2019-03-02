@@ -1,0 +1,104 @@
+<div style="overflow: hidden">
+    <button *ngIf="!spontaneousAction" (click)="setSpontaneous()" style="float:right; margin:20px" mat-raised-button>neue
+        Aktion durchführen</button>
+    <button *ngIf="spontaneousAction" (click)="setSpontaneous()" style="float:right; margin:20px" mat-raised-button>Abbrechen</button>
+</div>
+
+<div *ngIf="!spontaneousAction">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+                <p *ngIf="!element.done">{{element.name}} </p>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef> Datum </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+                <p *ngIf="!element.done">{{element.date | date:'dd.MM.yyyy'}} </p>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Aktion </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+                <p *ngIf="!element.done"> {{element.action}} </p>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Edit Column -->
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+                <button *ngIf="!element.done" (click)="performAction(element._id)" mat-raised-button>Aktion durchführen</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+</div>
+
+<div *ngIf="spontaneousAction">
+    <div class="inputDiv">
+        <mat-form-field style="width: 60vw">
+            <mat-select placeholder="Type" (selectionChange)="this.actionType = $event.value" [(ngModel)]="this.actionType"
+                required>
+                <mat-option id="optionService" value="Wartung">
+                    Wartung
+                </mat-option>
+                <mat-option id="optionInstallation" value="Installation">
+                    Installation
+                </mat-option>
+                <mat-option id="optionReplace" value="Tausch">
+                    Tausch
+                </mat-option>
+                <mat-option id="optionRepair" value="Reparatur">
+                    Reparatur
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 60vw">
+            <mat-select placeholder="Mitarbeiter" [(ngModel)]="this.actionWorkerId" required>
+                <mat-option *ngFor="let worker of this.workers" [value]="worker.worker_id">
+                    {{worker.lastname}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <div style="overflow:hidden; width: 60vw">
+            <mat-form-field style="width: 50vw">
+                <input type="text" placeholder="Kunde" [(ngModel)]="selectedCustomer" matInput id="matInput0"
+                    [formControl]="myControl" [matAutocomplete]="auto" required>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option.cFirma}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button mat-raised-button style="margin-left:25px" color="primary" [disabled]="selectedCustomer.kKunde === undefined" (click)="getMachineData(selectedCustomer.kKunde)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <br>
+        <mat-form-field style="width: 60vw">
+            <mat-select placeholder="Maschine" [(ngModel)]="this.actionMachineId" required>
+                <mat-option *ngFor="let machine of machines" [value]="machine._id">
+                    {{machine.serialnumber}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div style="clear: both; margin-left: 20px; margin-top: 20px">
+        <button mat-raised-button color="primary" (click)="performAction()" [disabled]="this.actionType == undefined
+                || this.actionWorkerId == undefined || this.selectedCustomer == undefined">Speichern</button>
+        <br>
+    </div>
+</div>

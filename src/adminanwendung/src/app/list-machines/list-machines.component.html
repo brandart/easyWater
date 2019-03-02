@@ -1,0 +1,42 @@
+<mat-progress-bar mode="query" value="40" *ngIf="this.showProgressbar"></mat-progress-bar>
+<mat-card>
+  <mat-table [dataSource]="this.dataSource">
+
+    <ng-container matColumnDef="customer">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Kunde </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.customer}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Ort </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.room}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="serialnumber">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Seriennummer </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.serialnumber}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="machineTyp">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Maschinentyp </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.machineType}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nextService">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Nächste Wartung </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.date | date:'dd.MM.yyyy'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="options">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Optionen </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-button (click)="openDeleteDialog(element._id, element._rev)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row mat-row *matRowDef="let row; columns: displayedColumns;" [ngStyle]="{'background-color': row.backgroundColor}"></mat-row>
+  </mat-table>
+</mat-card>

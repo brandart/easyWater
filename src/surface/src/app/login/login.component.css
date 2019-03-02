@@ -1,0 +1,19 @@
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.background-logo {
+    background: white;
+    background-image: url('../../assets/img/energyWaterLogo.png');
+    background-repeat: no-repeat;
+    background-position: center top 50px;
+    background-size: 40%;
+}
+
+.center-text {
+    margin-top: 30vh;
+    font-size: 100px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font: bolder;
+}

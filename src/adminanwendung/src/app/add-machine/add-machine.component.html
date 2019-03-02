@@ -1,0 +1,54 @@
+<div class="inputDiv">
+  <mat-form-field>
+    <mat-select placeholder="Type" [(ngModel)]="this.selectedTypeId" required>
+      <mat-option *ngFor="let machineType of machineTypes" [value]="machineType._id">
+        {{machineType.description}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input type="text" placeholder="Kunde" [(ngModel)]="selectedCustomer" matInput id="matInput0" [formControl]="myControl" [matAutocomplete]="auto" required> 
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option.cFirma}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <br>
+  <!--
+  <mat-form-field>
+    <mat-select placeholder="Kunde" [(ngModel)]="this.selectedCustomerId" required>
+      <mat-option *ngFor="let customer of customers" [value]="customer.kKunde">
+        {{customer.cFirma}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+-->
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Seriennummer" [(ngModel)]="this.serialNumber" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Raum" [(ngModel)]="this.room"> 
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Wartungsintervall" [(ngModel)]="this.selectedServiceInterval" >
+      <mat-option [value]="6">
+        6 Monate
+      </mat-option>
+      <mat-option [value]="12">
+        12 Monate
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<div style="clear: both; margin-left: 20px; margin-top: 20px">
+  <button mat-raised-button color="primary" (click)="saveMachine()" 
+  [disabled]="this.selectedCustomer.kKunde == undefined || this.selectedTypeId == undefined || this.serialNumber == undefined || !this.selectedServiceInterval">
+  Maschine erstellen</button>
+</div>

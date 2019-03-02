@@ -1,0 +1,20 @@
+<mat-toolbar>Einstellungen</mat-toolbar>
+<mat-tab-group>
+  <mat-tab label="Server">
+    <mat-card>
+      <mat-card-content>
+        <form>
+          <mat-form-field class="input-width">
+            <input matInput placeholder="Serverlink" [disabled]="serverLinkSet" [(ngModel)]="serverLink" name="serverLink">
+          </mat-form-field>
+        </form>
+        <mat-card-actions>
+          <button mat-raised-button [disabled]="!serverLink || serverLinkSet" (mouseup)="setServerLink()" color="primary">Link setzen</button>
+          <button mat-raised-button [disabled]="!serverLinkSet" (mouseup) = "deleteServerLink()" color="primary">Link löschen</button>
+        </mat-card-actions>
+      </mat-card-content>
+
+    </mat-card>
+
+  </mat-tab>
+</mat-tab-group>
